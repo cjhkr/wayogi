@@ -1,0 +1,9 @@
+<%=form_with model:@comment do |f| %>
+    <p>
+        <%=f.text_area :content%>
+    </p>
+    
+    <p>
+        <%=f.submit "댓글쓰기" %>
+    </p>
+<% end %>

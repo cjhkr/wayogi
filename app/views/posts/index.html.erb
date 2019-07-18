@@ -1,0 +1,33 @@
+<head>
+    <title>와요기</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="posts.scss">
+</head>
+
+<body>
+    
+    
+<% @posts.each do |post|%>
+    <div class="post_wrapper_wrapper">
+        <div class="post_wrapper">
+            <div class="container">
+                    <% if post.image.url%>
+                      <img class="post_image" src="<%=post.image.url%>">
+                    <% end %>
+            </div>
+        </div>
+        <p><%=link_to post.title, post %></p><br>
+        <% if user_signed_in? %>
+        <% if post.user.avatar.url%>
+          <img class="thumb" src="<%=current_user.avatar.thumb.url%>">
+        <% end %>
+        <% end %>
+        <p class="writer"><%=post.user.email%></p>
+    </div>
+<% end %>    
+
+    <%=render 'footer'%>
+</body>

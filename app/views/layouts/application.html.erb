@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>와요기</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="posts.scss">
+  </head>
+    <section id="banner">
+      <div class="container">
+        <div class="branding">
+          <p><a href="/">와<span>요기</span></a></p>
+        </div>
+        <div class="nav">
+          <ul>
+            <% if user_signed_in? %>
+            <li><a href="/posts/new">New</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#"><%=current_user.email%></a></li>
+            <li><a href="#">Admin</a></li>
+            <li><%=link_to "Sign Out", destroy_user_session_path, method:"delete"%></li>
+            <li></li>
+            <% else %>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="/users/sign_in">Login</a></li>
+            <li><a href="/users/sign_up">Sign Up</a></li>
+            <% end %>
+          </ul>
+        </div>
+          <div class="search_bar">
+            <%=form_tag search_search_path, method:"get" do %>
+            <%=text_field_tag :search%>
+            <%=submit_tag "Search"%>
+            <% end %>
+          </div>
+      </div>
+    </section>
+ 
+    
+
+  <body>
+    <%= yield %>
+  </body>
+</html>

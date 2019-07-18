@@ -1,0 +1,25 @@
+  <head>
+    <title>와요기</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="posts.scss">
+  </head>
+
+<body>  
+    <div class="wrapper">
+        <div class="container">
+            <% @search.each do |search| %>
+            <div class="title_wrapper">
+                <%=link_to search.title, search%><br>
+                <% end %> 
+            </div>
+        </div>
+
+
+         
+         
+         
+        <%=render "posts/footer"%>
+</body>
